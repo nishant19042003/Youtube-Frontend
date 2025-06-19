@@ -89,7 +89,23 @@ function ChannelProfile() {
         {tab === 'videos' && (
           <div onClick={() => setTab('videos')} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {videos.data.map((video) => (
-              <VideoCard key={video._id} video={video} />
+              <>
+                 
+                <div key={video._id} className="bg-white p-4 rounded shadow
+                hover:shadow-lg transition-shadow duration-200">
+                  <VideoCard key={video._id} video={video} />
+                  <button
+                    onClick={() => navigate(`/update/${video._id}`)}
+                    className="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                  >
+                    Update
+                  </button>
+                </div>
+                 
+                
+              </>
+              
+              
               
             ))}
           </div>

@@ -1,18 +1,19 @@
 // components/Header.jsx
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 function Header() {
   const user = useSelector((state) => state.user.authStatus);
-  const id = useSelector((state) => state.user.userdata?._id);
+  const  id = useSelector((state) => state.user.userdata?._id);
+  
   const navigate = useNavigate();
   const links= [
     { to: '/home', label: 'Home', isProtected: user },
     { to: '/login', label: 'Login', isProtected: !user }
     ,{ to: '/signup', label: 'Signup', isProtected: !user },
     
-    { to: id ? `/channel/${id}` : '', label: 'Channel', isProtected: user && id }
+    { to: id ? `/channel/${id}` : '', label: 'Channel', isProtected: user }
     
   ];
   return (

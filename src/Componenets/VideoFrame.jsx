@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import { useVideoUploadMutation } from '../Apis/videoApi';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-function VideoFrame({ video }) {
+function VideoFrame( video ) {
   // Get user data from Redux store
   const user = useSelector((state) => state.user.userdata._id);
   // Get navigate function from React Router
   const navigate = useNavigate();
   
-
+    if(video)console.log("VideoFrame props:jjjjjjjjjjjjjjjjjjjjjjjjjjttttttttt", video.video.data[0]);
 
   //form handling video upload or update
   const {
@@ -19,14 +19,14 @@ function VideoFrame({ video }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      title: video?.title || '',
-      description: video?.description || '',
+      title: video?.video?.data[0]?.title || '',
+      description:video?. video?.data[0].description || '',
     },
   });
 
   // Manually set thumbnail if needed (just displaying, not as default value)
   useEffect(() => {
-    if (video?.thumbnail) {
+    if (video?.video?.data[0].thumbnail) {
       // You might want to preview it, or just leave it as-is.
       console.log("Thumbnail exists, but can't be set as default in input type='file'");
     }

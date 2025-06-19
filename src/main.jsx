@@ -13,6 +13,7 @@ import Sidebar from './Componenets/Sidebar.jsx';
 import './index.css' 
 import ChannelProfile from './Pages/ChannelProfile.jsx';
 import VideoPlayerPage from './Pages/VideoPlayerPage.jsx';
+import VideoUpdate from './Pages/VideoUpdate.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="channel/:id" element={<ChannelProfile />} />
             <Route path="video/:id/:channelId" element={<VideoPlayerPage />} />
             <Route path="upload" element={<VideoUpload />} />
+            <Route path="update/:id" element={<VideoUpdate />} />
           </Route>
         </Routes>
       </BrowserRouter>
